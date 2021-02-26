@@ -1,6 +1,6 @@
 const path = require('path')
 const axios = require('axios')
-process.env.NODE_ENV !== 'production' &&
+if (process.env.NODE_ENV !== 'production')
   require('dotenv').config({ path: path.resolve(process.cwd(), '.env.local') })
 
 exports.handler = async function (event, _context) {
@@ -14,11 +14,16 @@ exports.handler = async function (event, _context) {
     const [q] = Object.entries(queryStringParameters)
     url.searchParams.append(q?.[0], q?.[1])
   }
-
-  const { data } = await axios.get(url.href)
-  // console.log(data)
-  return {
-    statusCode: 200,
-    body: JSON.stringify(data),
+  try {
+    const { data } = await axios.get(url.href)
+    return {
+      statusCode: 200,
+      body: JSON.stringify(data),
+    }
+  } catch (error) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify(error),
+    }
   }
 }
