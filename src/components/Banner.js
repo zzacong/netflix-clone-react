@@ -11,7 +11,6 @@ export default function Banner() {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(request.fetchNetflixOriginals)
-      console.log(data)
       const randInt = Math.floor(Math.random() * data.results.length - 1)
       setMovie(data.results[randInt])
       return data

@@ -6,5 +6,5 @@
 #   to = "/.netlify/functions/:splat"
 #   status = 200
 
-[dev]
-  publish = "public/"
+# [dev]
+#   publish = "public/"

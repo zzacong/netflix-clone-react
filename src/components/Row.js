@@ -13,7 +13,6 @@ export default function Row({ title, url, isLargeRow }) {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(url)
-      console.log(data)
       setMovies(data.results)
       return data
     }
