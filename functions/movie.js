@@ -15,7 +15,6 @@ exports.handler = async function (event, _context) {
     url.searchParams.append(q?.[0], q?.[1])
   }
 
-  console.log(url.href)
   const { data } = await axios.get(url.href)
   // console.log(data)
   return {
