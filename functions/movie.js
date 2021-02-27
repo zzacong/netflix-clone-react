@@ -1,9 +1,10 @@
 const path = require('path')
 const axios = require('axios')
-process.env.NODE_ENV !== 'production' &&
+
+if (process.env.NODE_ENV !== 'production')
   require('dotenv').config({ path: path.resolve(process.cwd(), '.env.local') })
 
-exports.handler = async function (event, _context) {
+exports.handler = async event => {
   const { path, queryStringParameters } = event
 
   const url = new URL(`https://api.themoviedb.org/3/${path.slice(11)}`)
