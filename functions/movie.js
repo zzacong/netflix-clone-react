@@ -1,12 +1,11 @@
 const axios = require('axios')
 const path = require('path')
 
-console.log(process.env.NODE_ENV)
-
 if (process.env.NODE_ENV !== 'production')
   require('dotenv').config({ path: path.resolve(process.cwd(), '.env.local') })
 
 exports.handler = async event => {
+  console.log('NODE_ENV: ', process.env.NODE_ENV)
   const { path, queryStringParameters } = event
 
   console.log(path)
