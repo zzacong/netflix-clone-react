@@ -1,13 +1,15 @@
 import React from 'react'
-import './css/App.css'
+import './App.css'
 
-import Navbar from './Navbar'
-import Banner from './Banner'
-import Row from './Row'
+import Navbar from './components/Navbar'
+import Banner from './components/Banner'
+import Row from './components/Row'
 
-import request from '../request'
+import request from './request'
 
 function App() {
+  console.log(process.env.NODE_ENV)
+
   return (
     <div className="app">
       <Navbar />
