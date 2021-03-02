@@ -20,7 +20,7 @@ function App() {
       <Row title="Trending Now" url={request.fetchTrending} />
       <Row title="Top rated" url={request.fetchTopRated} />
       <Row title="Action TV" url={request.fetchActionTV} />
-      <Row title="Mysterr TV" url={request.fetchMysteryTV} />
+      <Row title="Mystery TV" url={request.fetchMysteryTV} />
       <Row title="Drama TV" url={request.fetchDramaTV} />
       <Row title="Comedy TV" url={request.fetchComedyTV} />
     </div>
