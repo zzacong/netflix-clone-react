@@ -7,13 +7,14 @@ if (process.env.NODE_ENV !== 'production')
 exports.handler = async event => {
   const { path, queryStringParameters } = event
 
-  const url = new URL(`https://api.themoviedb.org/3/${path.slice(11)}`)
+  const resource = path.match(/(\/api\/movie\/)(.*)/)[2]
+  const url = new URL(`https://api.themoviedb.org/3/${resource}`)
 
   url.searchParams.append('api_key', process.env.TMDB_API_KEY)
 
   if (Object.keys(queryStringParameters).length) {
     const [q] = Object.entries(queryStringParameters)
-    url.searchParams.append(q?.[0], q?.[1])
+    url.searchParams.append(q[0], q[1])
   }
 
   console.log(url.href)
