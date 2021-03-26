@@ -14,7 +14,7 @@ exports.handler = async event => {
 
   if (Object.keys(queryStringParameters).length) {
     const [q] = Object.entries(queryStringParameters)
-    url.searchParams.append(q[0], q[1])
+    url.searchParams.append(q?.[0], q?.[1])
   }
 
   console.log(url.href)
