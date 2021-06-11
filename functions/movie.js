@@ -5,8 +5,9 @@ if (process.env.NODE_ENV !== 'production')
   require('dotenv').config({ path: path.resolve(process.cwd(), '.env.local') })
 
 exports.handler = async event => {
-  const { path, queryStringParameters } = event
+  console.log('NODE_VERSION', process.version)
 
+  const { path, queryStringParameters } = event
   const resource = path.match(/(\/api\/movie\/)(.*)/)[2]
   const url = new URL(`https://api.themoviedb.org/3/${resource}`)
 
