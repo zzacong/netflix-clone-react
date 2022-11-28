@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import './css/Banner.css'
-import axios from '../axios'
 import request from '../request'
+
+const imageBaseUrl = 'https://image.tmdb.org/t/p/original'
+
+const truncate = (str, n) => {
+  return str?.length > n ? str.substr(0, n - 1) + '...' : str
+}
 
 export default function Banner() {
   const [movie, setMovie] = useState()
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/original'
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get(request.fetchNetflixOriginals)
+      const data = await fetch(request.fetchNetflixOriginals).then(res =>
+        res.json()
+      )
       const randInt = Math.floor(Math.random() * data.results.length - 1)
       setMovie(data.results[randInt])
       return data
     }
     getData()
   }, [])
-
-  // console.log(movie)
-
-  const truncate = (str, n) => {
-    return str?.length > n ? str.substr(0, n - 1) + '...' : str
-  }
 
   return (
     <header

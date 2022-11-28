@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import './css/Nav.css'
 
@@ -7,18 +6,17 @@ export default function Navbar() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    const listener = () => {
       if (window.scrollY > 100) {
         setShow(true)
       } else setShow(false)
-    })
-    return () => {
-      window.removeEventListener('scroll')
     }
+    window.addEventListener('scroll', listener)
+    return () => window.removeEventListener('scroll', listener)
   }, [])
 
   return (
-    <div className={`nav ${show && 'nav_black'}`}>
+    <div className={`nav ${show ? 'nav_black' : ''}`}>
       <img
         className="nav_logo"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png"
